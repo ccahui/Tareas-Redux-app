@@ -5,12 +5,16 @@ export class Tarea {
     public completado: boolean;
 
     constructor(decripcionTarea: string) {
-        this.id = Math.random();
+        this.id = this.generarId();
         this.completado = false;
         this.descripcion = this.primeraLetraUpperCase(decripcionTarea);
     }
 
     private primeraLetraUpperCase(cadena: string): string {
-        return cadena.charAt(0) + cadena.slice(1);
+        return cadena.charAt(0).toUpperCase() + cadena.slice(1);
+    }
+
+    private generarId() {
+        return Math.floor(Math.random() * 1000);
     }
 }
