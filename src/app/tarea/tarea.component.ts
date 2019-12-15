@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Tarea } from './store/tarea.model';
 
 @Component({
   selector: 'app-tarea',
