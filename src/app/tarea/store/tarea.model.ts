@@ -5,16 +5,8 @@ export class Tarea {
     public completado: boolean;
 
     constructor(decripcionTarea: string) {
-        this.id = this.generarId();
+        this.id = Math.floor(Math.random() * 1000);
         this.completado = false;
-        this.descripcion = this.primeraLetraUpperCase(decripcionTarea);
-    }
-
-    private primeraLetraUpperCase(cadena: string): string {
-        return cadena.charAt(0).toUpperCase() + cadena.slice(1);
-    }
-
-    private generarId() {
-        return Math.floor(Math.random() * 1000);
+        this.descripcion = decripcionTarea.charAt(0).toUpperCase() + decripcionTarea.slice(1);
     }
 }

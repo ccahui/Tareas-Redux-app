@@ -15,6 +15,7 @@ import { environment } from '../environments/environment.prod';
 import { tareasReducer} from './tarea/store/tareas.reducer';
 
 import { ReactiveFormsModule } from '@angular/forms';
+import { appReducers } from './tarea/store/app.reducers';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,7 +28,7 @@ import { ReactiveFormsModule } from '@angular/forms';
   ],
   imports: [
     BrowserModule,
-    StoreModule.forRoot({tareas: tareasReducer}, {
+    StoreModule.forRoot(appReducers, {
       runtimeChecks: {
         strictStateImmutability: true,
         strictActionImmutability: true,

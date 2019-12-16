@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
-import { AppState } from '../store/tareas.reducer';
+import { AppState } from '../store/app.reducers';
 import { Store } from '@ngrx/store';
 import { Tarea } from '../store/tarea.model';
 import { agregarTarea } from '../store/tareas.actions';

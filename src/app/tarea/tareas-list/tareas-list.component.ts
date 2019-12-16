@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Store, select } from '@ngrx/store';
-import { AppState, selectTareas } from '../store/tareas.reducer';
+import { selectTareas } from '../store/tareas.reducer';
+import { AppState} from '../store/app.reducers';
 import { Observable } from 'rxjs';
 import { Tarea } from '../store/tarea.model';
 

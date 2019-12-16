@@ -3,11 +3,7 @@ import * as  tareas from './tareas.actions';
 import { Tarea } from './tarea.model';
 
 
-export interface AppState {
-    tareas: Tarea[];
-}
-
-const initialState = [new Tarea('Aprender Angular'), new Tarea('Aprender Redux')];
+const initialState: Tarea[] = [new Tarea('Aprender Angular'), new Tarea('Aprender Redux')];
 
 const reducer = createReducer(initialState,
     on(tareas.agregarTarea, (state, { tarea }) => [...state, { ...tarea }]),
@@ -28,14 +24,18 @@ const reducer = createReducer(initialState,
             return tarea;
         }
     })),
+    on(tareas.cambiarEstadoTareas, (state, { estado }) => state.map(tarea => {
+        return { ...tarea, completado: estado };
+    })),
 
 );
 
-export function tareasReducer(state, action) {
+export function tareasReducer(state: Tarea[], action): Tarea[] {
     return reducer(state, action);
 }
 
-export const tareasSelect = (state: AppState) => state.tareas;
+export const tareasSelect = (state) => state.tareas;
+
 export const selectTareas = createSelector(
     tareasSelect,
     (state: Tarea[]) => state);
