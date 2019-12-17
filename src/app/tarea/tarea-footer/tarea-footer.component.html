@@ -1,13 +1,14 @@
 <footer class="footer">
-    <!-- This should be `0 items left` by default -->
-    <span class="todo-count"><strong>0</strong></span>
-    <!-- Remove this if you don't implement routing -->
-    <ul class="filters">
-      <li *ngFor="let filtro of filtros">
-        <a [ngClass]="{'selected': filtroActual == filtro }" (click)="cambiarFiltro(filtro)" href="#/">{{filtro}}</a>
-      </li>
-      <button class="clear-completed" style="margin-right: 10px">Limpiar Completados</button>  
-    </ul>
-    <!-- Hidden if no completed items are left ↓ -->
-    
-  </footer>
+  <!-- This should be `0 items left` by default -->
+  <span class="todo-count"><strong>{{sizeTareas$ | async}}</strong></span>
+  <!-- Remove this if you don't implement routing -->
+  <ul class="filters">
+    <li *ngFor="let filtro of filtros">
+      <a [ngClass]="{'selected': filtroActual == filtro }" (click)="cambiarFiltro(filtro)" href="#/">{{filtro}}</a>
+    </li>
+    <button class="clear-completed" style="margin-right: 10px" (click)="eliminarTareasCompletadas()">Limpiar
+      Completados</button>
+  </ul>
+  <!-- Hidden if no completed items are left ↓ -->
+
+</footer>

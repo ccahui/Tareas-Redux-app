@@ -3,6 +3,8 @@ import { Observable } from 'rxjs';
 import { AppState } from '../store/app.reducers';
 import { Store, select } from '@ngrx/store';
 import { filtroSelect, FiltroTareas, aplicarFiltro } from '../store/filtro.actions';
+import { eliminarTareasCompletadas } from '../store/tareas.actions';
+import { selectFiltroTareas, selectSizeFiltroTareas } from '../store/tareas.reducer';
 
 @Component({
   selector: 'app-tarea-footer',
@@ -13,6 +15,8 @@ export class TareaFooterComponent implements OnInit {
 
   filtros: FiltroTareas[] = [FiltroTareas.completados, FiltroTareas.pendientes, FiltroTareas.todos];
   filtroActual: FiltroTareas;
+  sizeTareas$: Observable<number>;
+
   constructor(private store: Store<AppState>) { }
 
   ngOnInit() {
@@ -20,10 +24,15 @@ export class TareaFooterComponent implements OnInit {
       console.log(filtro);
       this.filtroActual = filtro;
     });
-  }
-  cambiarFiltro(filtro: FiltroTareas) {
-    this.store.dispatch(aplicarFiltro({tipo: filtro}));
+    this.sizeTareas$ = this.store.pipe(select(selectSizeFiltroTareas));
   }
 
+  cambiarFiltro(filtro: FiltroTareas) {
+    this.store.dispatch(aplicarFiltro({ tipo: filtro }));
+  }
+
+  eliminarTareasCompletadas() {
+    this.store.dispatch(eliminarTareasCompletadas());
+  }
 
 }

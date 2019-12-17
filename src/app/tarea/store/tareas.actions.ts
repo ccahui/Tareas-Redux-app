@@ -26,3 +26,7 @@ export const eliminarTarea = createAction(
     '[TAREA] Eliminar una tarea',
     props<{ idTarea: number }>(),
 );
+
+export const eliminarTareasCompletadas = createAction(
+    '[TAREA] Eliminar tareas completadas'
+);

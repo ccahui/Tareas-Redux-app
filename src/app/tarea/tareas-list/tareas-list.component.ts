@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Store, select } from '@ngrx/store';
-import { selectTareas } from '../store/tareas.reducer';
+import { selectTareas, selectFiltroTareas } from '../store/tareas.reducer';
 import { AppState} from '../store/app.reducers';
 import { Observable } from 'rxjs';
 import { Tarea } from '../store/tarea.model';
@@ -16,7 +16,7 @@ export class TareasListComponent implements OnInit {
   constructor(private store: Store<AppState>) { }
 
   ngOnInit() {
-    this.tareas$ = this.store.pipe(select(selectTareas));
+    this.tareas$ = this.store.pipe(select(selectFiltroTareas));
   }
 
 }
